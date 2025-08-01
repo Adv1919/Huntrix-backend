@@ -46,6 +46,16 @@ app.use("/api/rooms", roomsRouter);
 app.use("/api/admin", adminRoutes);
 app.use('/api/moodboard', moodboardRoutes);
 
+// Example webhook endpoint for Omnidim
+app.post('/webhook', express.json(), (req, res) => {
+  // Handle incoming Omnidim POST data here
+  console.log('Received Omnidim webhook:', req.body);
+
+  // Respond with 200 OK to acknowledge receipt
+  res.status(200).json({ message: 'Webhook received!' });
+});
+
+
 
 // -------- Centralized Error Handling Middleware --------
 app.use((err, req, res, next) => {

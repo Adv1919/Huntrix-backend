@@ -6,6 +6,9 @@ const router = express.Router();
 
 // POST /api/survey/submit
 router.post('/submit', authMiddleware, async (req, res) => {
+  console.log('Received survey submit POST');
+  console.log('User ID:', req.user.id);
+  console.log('Body:', JSON.stringify(req.body, null, 2));
   const userId = req.user.id;
   const answers = req.body.answers;
 
